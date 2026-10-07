@@ -14,6 +14,11 @@
 		CEA8CA061F071C3300448B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA8CA051F071C3300448B51 /* Images.xcassets */; };
 		D3290F0D2DFB60230095B81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3290F0C2DFB60230095B81E /* AppDelegate.swift */; };
 		F5413AB12F61A00100E52D27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5413AB02F61A00100E52D27 /* SceneDelegate.swift */; };
+		FD2804156C274921A34A80EA /* Figtree-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */; };
+		B95DA8703AA942E79B5058B2 /* Figtree-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */; };
+		63B0ED570C1C45B79264BC29 /* Figtree-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */; };
+		A334FA653C6D4AE3BEEB074F /* Figtree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */; };
+		F5CFBD1B2B564C03803CFB44 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6E462F156C44AEF959D58AE /* OFL.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		CEA8CA051F071C3300448B51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../mobile_sdk/SalesforceMobileSDK-iOS/shared/resources/Images.xcassets"; sourceTree = "<group>"; };
 		D3290F0C2DFB60230095B81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ServiceBird/AppDelegate.swift; sourceTree = "<group>"; };
 		F5413AB02F61A00100E52D27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ServiceBird/SceneDelegate.swift; sourceTree = "<group>"; };
+		582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */ = {isa = PBXFileReference; name = "Figtree-SemiBold.ttf"; path = "../assets/fonts/Figtree-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */ = {isa = PBXFileReference; name = "Figtree-Regular.ttf"; path = "../assets/fonts/Figtree-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Figtree-ExtraBold.ttf"; path = "../assets/fonts/Figtree-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */ = {isa = PBXFileReference; name = "Figtree-Bold.ttf"; path = "../assets/fonts/Figtree-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A6E462F156C44AEF959D58AE /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../assets/fonts/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				6473DB45A273CC31E19C4F9A /* Pods */,
 				C73512AABD4BDBC0734E686B /* Frameworks */,
+				16B764A5CFC04AAA8125BD0B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -110,6 +121,19 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		16B764A5CFC04AAA8125BD0B /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */,
+				18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */,
+				3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */,
+				D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */,
+				A6E462F156C44AEF959D58AE /* OFL.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -181,6 +205,11 @@
 				CEA8CA061F071C3300448B51 /* Images.xcassets in Resources */,
 				69BE961B2AD535C8002E3F6C /* PrivacyInfo.xcprivacy in Resources */,
 				B7168FBE1FACC7EB00A48DB5 /* LaunchScreen.storyboard in Resources */,
+				FD2804156C274921A34A80EA /* Figtree-SemiBold.ttf in Resources */,
+				B95DA8703AA942E79B5058B2 /* Figtree-Regular.ttf in Resources */,
+				63B0ED570C1C45B79264BC29 /* Figtree-ExtraBold.ttf in Resources */,
+				A334FA653C6D4AE3BEEB074F /* Figtree-Bold.ttf in Resources */,
+				F5CFBD1B2B564C03803CFB44 /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

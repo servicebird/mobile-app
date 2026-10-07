@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Need to use SalesforceReactSDKManager in Salesforce Mobile SDK apps using React Native
     SalesforceReactSDKManager.initializeSDK()
+
+    // Mobile SDK 14 turns DPoP-bound tokens on by default, but many orgs reject
+    // them on REST calls with INVALID_JWT_FORMAT. Use normal Bearer tokens.
+    SalesforceManager.shared.usesDPoP = false
   }
   
   func application(
@@ -92,7 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Set `showsNavigationBar` to false if you want to hide the top bar
     loginViewConfig.showsNavigationBar = true
     
-    loginViewConfig.navigationBarColor = UIColor.init(red: 0.051, green:0.765, blue:0.733, alpha:1.0)
+    // ServiceBird navy #14213D
+    loginViewConfig.navigationBarColor = UIColor.init(red: 0.078, green: 0.129, blue: 0.239, alpha: 1.0)
     loginViewConfig.navigationTitleColor = UIColor.white
     loginViewConfig.navigationBarFont = UIFont.init(name: "Helvetica", size:16.0)
     

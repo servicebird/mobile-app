@@ -31,6 +31,10 @@ import android.os.Bundle
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
+import com.facebook.react.bridge.Callback
+import com.salesforce.androidsdk.app.SalesforceSDKManager
+import com.salesforce.androidsdk.auth.OAuth2.LogoutReason
+import com.salesforce.androidsdk.reactnative.bridge.ReactBridgeHelper
 import com.salesforce.androidsdk.reactnative.ui.SalesforceReactActivity
 
 class MainActivity : SalesforceReactActivity() {
@@ -58,5 +62,15 @@ class MainActivity : SalesforceReactActivity() {
      * Determines if login should occur on application launch or not.
      * @return True for login to occur on application launch, false otherwise
      */
-    override fun shouldAuthenticate() = true
+    override fun shouldAuthenticate() = false
+
+    /**
+     * Logs out without opening the Salesforce login page, so the app's own
+     * login screen is shown instead.
+     */
+    override fun logout(callback: Callback?) {
+        SalesforceSDKManager.getInstance().logout(null, this, false, LogoutReason.UNKNOWN)
+        setRestClient(null)
+        callback?.let { ReactBridgeHelper.invokeSuccess(it, "Logout complete") }
+    }
 }

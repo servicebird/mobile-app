@@ -1,13 +1,15 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { Alert, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { Text } from '../components/Text';
 import { Icon } from '../components/Icon';
+import { HeaderLogo } from '../components/Logo';
 import { Card, ErrorView, Loading, styles as ui } from '../components/ui';
 import { VisitCard } from '../components/VisitCard';
 import { dayLabel, initials, plural } from '../format';
 import type { ScreenProps } from '../navigation';
 import { useSession } from '../session';
 import { getMyVisits, getUserName } from '../sf/serviceBird';
-import { cardShadow, colors, radius, touch } from '../theme';
+import { colors, radius, touch } from '../theme';
 import { useLoad } from '../useLoad';
 
 export function MyDayScreen({ navigation }: ScreenProps<'MyDay'>) {
@@ -28,6 +30,7 @@ export function MyDayScreen({ navigation }: ScreenProps<'MyDay'>) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerTitle: () => <HeaderLogo />,
       headerRight: () => <Avatar name={userName} onSignOut={session.signOut} />,
     });
   }, [navigation, userName, session.signOut]);
@@ -39,10 +42,10 @@ export function MyDayScreen({ navigation }: ScreenProps<'MyDay'>) {
     <ScrollView
       style={ui.screen}
       contentContainerStyle={ui.scroll}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.brand} />}>
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.navy} />}>
       <View style={s.day}>
         <Pressable accessibilityRole="button" accessibilityLabel="Previous day" onPress={() => setOffset(o => o - 1)} style={s.dayBtn}>
-          <Icon name="back" size={22} color={colors.brand} strokeWidth={2.2} />
+          <Icon name="back" size={22} color={colors.navy} strokeWidth={2.2} />
         </Pressable>
         <View style={s.dayMid}>
           <Text style={s.dayLabel}>{dayLabel(day)}</Text>
@@ -51,7 +54,7 @@ export function MyDayScreen({ navigation }: ScreenProps<'MyDay'>) {
           </Text>
         </View>
         <Pressable accessibilityRole="button" accessibilityLabel="Next day" onPress={() => setOffset(o => o + 1)} style={s.dayBtn}>
-          <Icon name="forward" size={22} color={colors.brand} strokeWidth={2.2} />
+          <Icon name="forward" size={22} color={colors.navy} strokeWidth={2.2} />
         </Pressable>
       </View>
 
@@ -89,7 +92,8 @@ function Avatar({ name, onSignOut }: { name: string; onSignOut: () => void }) {
           { text: 'Log out', style: 'destructive', onPress: onSignOut },
         ])
       }
-      style={s.avatar}>
+      style={s.avatar}
+      hitSlop={4}>
       <Text style={s.avatarText}>{initials(name) || '?'}</Text>
     </Pressable>
   );
@@ -100,11 +104,11 @@ const s = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: colors.brand,
+    backgroundColor: colors.amber,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  avatarText: { color: '#FFFFFF', fontWeight: '700', fontSize: 14 },
+  avatarText: { color: colors.navy, fontWeight: '800', fontSize: 14 },
   day: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -112,14 +116,13 @@ const s = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: radius,
-    padding: 2,
-    ...cardShadow,
+    borderRadius: radius.card,
+    padding: 4,
   },
   dayBtn: { width: touch, height: touch, alignItems: 'center', justifyContent: 'center' },
   dayMid: { alignItems: 'center' },
-  dayLabel: { fontWeight: '700', fontSize: 17, color: colors.text },
+  dayLabel: { fontWeight: '700', fontSize: 17 },
   empty: { alignItems: 'center', paddingVertical: 40, paddingHorizontal: 24 },
-  emptyTitle: { fontWeight: '700', fontSize: 17, color: colors.text },
+  emptyTitle: { fontWeight: '700', fontSize: 17 },
   emptyText: { fontSize: 15, textAlign: 'center' },
 });

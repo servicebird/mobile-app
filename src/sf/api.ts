@@ -96,13 +96,16 @@ export interface Session {
   instanceUrl: string;
 }
 
-/** Returns the logged-in user, opening the Salesforce login page first if needed. */
-export function getSession(): Promise<Session> {
-  return new Promise((resolve, reject) => {
-    const done = (acc: any) =>
-      resolve({ userId: acc.userId, orgId: acc.orgId, instanceUrl: acc.instanceUrl });
-    oauth.getAuthCredentials(done, () => oauth.authenticate(done, reject));
-  });
+const toSession = (acc: any): Session => ({ userId: acc.userId, orgId: acc.orgId, instanceUrl: acc.instanceUrl });
+
+/** The saved login from a previous run, or null if the worker has not logged in yet. */
+export function getExistingSession(): Promise<Session | null> {
+  return new Promise(resolve => oauth.getAuthCredentials(acc => resolve(toSession(acc)), () => resolve(null)));
+}
+
+/** Opens the Salesforce login page and resolves once the worker has logged in. */
+export function login(): Promise<Session> {
+  return new Promise((resolve, reject) => oauth.authenticate(acc => resolve(toSession(acc)), reject));
 }
 
 export function logout(): Promise<void> {

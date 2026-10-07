@@ -9,10 +9,12 @@ our own.
 
 ## What it does today
 
-The six screens from the ServiceBird Mobile design:
+The screens from the ServiceBird Mobile design, in the ServiceBird look
+(navy, amber and green, Figtree font):
 
 | Screen | Reads | Writes |
 |---|---|---|
+| Login | | opens the Salesforce login page when the worker taps Log in |
 | My day | Visits where Field Worker's User = me, for the chosen day | |
 | Visit | Visit, Job, Account, Contact, Job Items, Charges, photo files | Visit Status = On Site ("I'm on site") |
 | Add charge | Settings rates (pre-fill) | new Charge on the Job and Visit |
@@ -31,7 +33,8 @@ src/sf/api.ts              Salesforce calls (query, create, update) and the NAME
 src/sf/serviceBird.ts      every query and write, with the object and field names
 src/screens/               one file per screen
 src/components/            buttons, cards, chips, signature pad, icons (SLDS look)
-src/theme.ts               colours from the design
+src/theme.ts               colours and fonts from the design
+assets/fonts/              Figtree font files (after adding a font: npx react-native-asset)
 android/  ios/             the native projects (you rarely touch these)
 ```
 
@@ -69,8 +72,10 @@ yarn start
 yarn ios                   # or open ios/ServiceBird.xcworkspace in Xcode and press Run
 ```
 
-The app opens the Salesforce login page. Log in with a user of an org that has
-the ServiceBird objects. Change your code, save, and the app reloads by itself.
+The app starts on the ServiceBird login screen. Tap **Log in** and the
+Salesforce login page opens; log in with a user of an org that has the
+ServiceBird objects. To test against a sandbox or a company login address, tap
+the menu on the Salesforce page and choose "Use custom domain" or "Sandbox". Change your code, save, and the app reloads by itself.
 
 ## Before it shows real data
 
@@ -101,6 +106,13 @@ Professional Edition API access is granted to (see
 `research/mobile-app-architecture.md`).
 
 ## Choices made in this first version
+
+- **No username and password fields in the app.** The login screen has a Log in
+  button that opens Salesforce's own login page. That way the app never handles
+  passwords, MFA and single sign-on keep working, and it passes the AppExchange
+  security review. Automatic login at start-up is switched off
+  (`shouldAuthenticate` in `MainActivity.kt` and `bootconfig.plist`) so the
+  ServiceBird screen shows first, and logging out returns to it.
 
 - **Job title**: the Job has no title field, so the first line of the Job
   Description is shown as the title and the rest as "From the office".
