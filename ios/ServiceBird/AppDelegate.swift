@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Need to use SalesforceReactSDKManager in Salesforce Mobile SDK apps using React Native
     SalesforceReactSDKManager.initializeSDK()
+
+    // Mobile SDK 14 turns DPoP-bound tokens on by default, but many orgs reject
+    // them on REST calls with INVALID_JWT_FORMAT. Use normal Bearer tokens.
+    SalesforceManager.shared.usesDPoP = false
   }
   
   func application(

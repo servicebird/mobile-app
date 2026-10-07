@@ -68,6 +68,10 @@ class MainApplication : Application(), ReactApplication {
 
         SalesforceReactSDKManager.initReactNative(getApplicationContext(), MainActivity::class.java)
 
+        // Mobile SDK 14 turns DPoP-bound tokens on by default, but many orgs reject
+        // them on REST calls with INVALID_JWT_FORMAT. Use normal Bearer tokens.
+        SalesforceReactSDKManager.getInstance().useDPoP = false
+
         /*
          * Un-comment the following line to enable push notifications in this
          * app. Replace 'pnInterface' with your implementation of
