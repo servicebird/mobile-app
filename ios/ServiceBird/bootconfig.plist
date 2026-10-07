@@ -7,6 +7,6 @@
 	<key>oauthRedirectURI</key>
 	<string>testsfdc:///mobilesdk/detect/oauth/done</string>
 	<key>shouldAuthenticate</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

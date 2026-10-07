@@ -34,7 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>SFDCOAuthLoginHost</key>
@@ -74,5 +74,12 @@
 	<string>ServiceBird uses the camera to take photos of your work for the job.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>ServiceBird lets you attach photos from your gallery to the job.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Figtree-SemiBold.ttf</string>
+		<string>Figtree-Regular.ttf</string>
+		<string>Figtree-ExtraBold.ttf</string>
+		<string>Figtree-Bold.ttf</string>
+	</array>
 </dict>
 </plist>

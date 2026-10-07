@@ -1,7 +1,8 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, RefreshControl, ScrollView, Text, View } from 'react-native';
+import { Alert, Linking, Platform, RefreshControl, ScrollView, View } from 'react-native';
+import { Text } from '../components/Text';
 import { Icon } from '../components/Icon';
-import { Button, Card, ErrorView, Footer, Loading, SectionLabel, StatusChip, styles as ui } from '../components/ui';
+import { Button, Card, ErrorView, Footer, Loading, RoundButton, SectionLabel, StatusChip, styles as ui } from '../components/ui';
 import { money, plural, time, unitLabel } from '../format';
 import type { ScreenProps } from '../navigation';
 import { errorMessage } from '../sf/api';
@@ -52,7 +53,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
     <View style={ui.screen}>
       <ScrollView
         contentContainerStyle={ui.scroll}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.brand} />}>
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.navy} />}>
         <Card>
           <View style={[ui.row, { justifyContent: 'space-between' }]}>
             <StatusChip status={v.status} />
@@ -60,7 +61,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
               {v.jobNumber}{v.jobType ? ` · ${v.jobType}` : ''}
             </Text>
           </View>
-          <Text style={{ fontSize: 22, fontWeight: '700', lineHeight: 26, color: colors.text }}>{v.title}</Text>
+          <Text style={{ fontSize: 22, fontWeight: '700', lineHeight: 27 }}>{v.title}</Text>
           <View style={[ui.row, { gap: 8 }]}>
             <Icon name="clock" size={18} color={colors.text} />
             <Text style={{ fontSize: 16, fontWeight: '600', color: colors.text }}>
@@ -79,25 +80,17 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
               </Text>
             </View>
             {!!v.phone && (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Call contact"
+              <RoundButton
+                icon="phone"
+                label="Call contact"
                 onPress={() => Linking.openURL('tel:' + v.phone.replace(/[^\d+]/g, ''))}
-                style={ui.squareBtn}>
-                <Icon name="phone" color={colors.brand} />
-              </Pressable>
+              />
             )}
           </View>
           {!!v.address && (
             <View style={ui.row}>
               <Text style={[ui.grow, { fontSize: 15, color: colors.text }]}>{v.address}</Text>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Open directions in maps"
-                onPress={() => Linking.openURL(mapsUrl(v.address))}
-                style={ui.squareBtn}>
-                <Icon name="navigate" color={colors.brand} />
-              </Pressable>
+              <RoundButton icon="navigate" label="Open directions in maps" onPress={() => Linking.openURL(mapsUrl(v.address))} />
             </View>
           )}
         </Card>
@@ -107,7 +100,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
           <View>
             {v.items.map((it, i) => (
               <View key={it.id} style={[ui.line, i === 0 && ui.lineFirst]}>
-                <Icon name="check" color={colors.success} strokeWidth={2.4} />
+                <Icon name="check" color={colors.green} strokeWidth={2.4} />
                 <Text style={[ui.grow, { fontSize: 16, color: colors.text }]}>{it.name}</Text>
                 <Text style={[ui.muted, { fontSize: 15, fontWeight: '700' }]}>×{it.quantity}</Text>
               </View>
@@ -115,7 +108,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
             {v.items.length === 0 && <Text style={[ui.muted, { fontSize: 15 }]}>No planned items.</Text>}
           </View>
           {!!v.officeNotes && (
-            <View style={{ backgroundColor: colors.background, borderRadius: 4, padding: 12 }}>
+            <View style={ui.note}>
               <Text style={{ fontSize: 15, lineHeight: 21, color: colors.text }}>
                 <Text style={{ fontWeight: '700' }}>From the office: </Text>
                 {v.officeNotes}
@@ -146,7 +139,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
           {editable && (
             <Button
               small
-              variant="neutral"
+              variant="ghost"
               icon="plus"
               label="Add charge"
               onPress={() => navigation.navigate('AddCharge', { visitId: v.id, jobId: v.jobId })}
@@ -172,7 +165,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
           {editable && (
             <Button
               small
-              variant="neutral"
+              variant="ghost"
               icon="camera"
               label="Add photos"
               onPress={() => navigation.navigate('Photos', { jobId: v.jobId, jobNumber: v.jobNumber })}
@@ -185,7 +178,7 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
         {v.status === 'Scheduled' && (
           <>
             <Button
-              variant="neutral"
+              variant="ghost"
               icon="navigate"
               label="Go"
               style={{ flexGrow: 0 }}
@@ -195,12 +188,12 @@ export function VisitScreen({ navigation, route }: ScreenProps<'Visit'>) {
           </>
         )}
         {v.status === 'On Site' && (
-          <Button icon="check" label="Complete visit" onPress={() => navigation.navigate('Complete', { visitId: v.id })} />
+          <Button variant="go" icon="check" label="Complete visit" onPress={() => navigation.navigate('Complete', { visitId: v.id })} />
         )}
         {v.status === 'Done' && (
-          <View style={[ui.row, { flex: 1, justifyContent: 'center', height: 44, gap: 8 }]}>
-            <Icon name="check" size={22} color={colors.success} strokeWidth={2.6} />
-            <Text style={{ fontWeight: '700', color: colors.success, fontSize: 16 }}>Visit completed</Text>
+          <View style={[ui.row, { flex: 1, justifyContent: 'center', height: 54, gap: 8 }]}>
+            <Icon name="check" size={22} color={colors.green} strokeWidth={2.6} />
+            <Text style={{ fontWeight: '700', color: colors.green, fontSize: 16 }}>Visit completed and signed</Text>
           </View>
         )}
       </Footer>

@@ -1,33 +1,34 @@
-/** Small SLDS-style building blocks shared by the screens. */
+/** Small building blocks in the ServiceBird look, shared by the screens. */
 import React from 'react';
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextInput,
-  TextInputProps,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { ActivityIndicator, Pressable, StyleProp, StyleSheet, TextInputProps, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { cardShadow, colors, radius, touch } from '../theme';
+import { colors, radius, touch } from '../theme';
 import type { VisitStatus } from '../sf/serviceBird';
 import { Icon, IconName } from './Icon';
+import { Text, TextInput } from './Text';
 
 export function Card({ children, style }: { children: React.ReactNode; style?: StyleProp<ViewStyle> }) {
   return <View style={[styles.card, style]}>{children}</View>;
 }
 
+/** Small uppercase heading above a card's content, e.g. CUSTOMER. */
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return <Text style={styles.sectionLabel} accessibilityRole="header">{children}</Text>;
 }
 
+type Variant = 'primary' | 'go' | 'dark' | 'ghost';
+
+const VARIANT: Record<Variant, { bg: string; pressed: string; fg: string; border?: string }> = {
+  primary: { bg: colors.amber, pressed: colors.amberDark, fg: colors.navy },
+  go: { bg: colors.green, pressed: colors.greenDark, fg: '#FFFFFF' },
+  dark: { bg: colors.navy, pressed: '#0D1629', fg: '#FFFFFF' },
+  ghost: { bg: colors.surface, pressed: colors.soft, fg: colors.navy, border: colors.borderInput },
+};
+
 interface ButtonProps {
   label: string;
   onPress: () => void;
-  variant?: 'brand' | 'neutral';
+  variant?: Variant;
   icon?: IconName;
   small?: boolean;
   disabled?: boolean;
@@ -35,10 +36,9 @@ interface ButtonProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export function Button({ label, onPress, variant = 'brand', icon, small, disabled, busy, style }: ButtonProps) {
-  const brand = variant === 'brand';
+export function Button({ label, onPress, variant = 'primary', icon, small, disabled, busy, style }: ButtonProps) {
+  const v = VARIANT[variant];
   const off = disabled || busy;
-  const fg = off ? '#FFFFFF' : brand ? '#FFFFFF' : colors.brand;
   return (
     <Pressable
       accessibilityRole="button"
@@ -47,18 +47,18 @@ export function Button({ label, onPress, variant = 'brand', icon, small, disable
       onPress={onPress}
       style={({ pressed }) => [
         styles.btn,
-        brand ? styles.btnBrand : styles.btnNeutral,
-        pressed && (brand ? styles.btnBrandPressed : styles.pressed),
-        off && styles.btnDisabled,
+        { backgroundColor: pressed ? v.pressed : v.bg },
+        v.border ? { borderWidth: 1.5, borderColor: pressed ? colors.navy : v.border } : null,
         small && styles.btnSmall,
+        disabled && !busy && styles.btnDisabled,
         style,
       ]}>
       {busy ? (
-        <ActivityIndicator color={fg} />
+        <ActivityIndicator color={v.fg} />
       ) : (
         <>
-          {icon && <Icon name={icon} size={small ? 18 : 20} color={fg} strokeWidth={2.4} />}
-          <Text style={[styles.btnText, small && styles.btnTextSmall, { color: fg }]}>{label}</Text>
+          {icon && <Icon name={icon} size={small ? 18 : 22} color={v.fg} strokeWidth={2.6} />}
+          <Text style={[styles.btnText, small && styles.btnTextSmall, { color: v.fg }]}>{label}</Text>
         </>
       )}
     </Pressable>
@@ -74,9 +74,9 @@ export function LinkButton({ label, onPress }: { label: string; onPress: () => v
 }
 
 const CHIP: Record<VisitStatus, { bg: string; fg: string }> = {
-  Scheduled: { bg: colors.neutralBadge, fg: colors.text },
-  'On Site': { bg: colors.warning, fg: colors.text },
-  Done: { bg: colors.success, fg: '#FFFFFF' },
+  Scheduled: { bg: colors.softer, fg: colors.scheduledText },
+  'On Site': { bg: colors.amber, fg: colors.navy },
+  Done: { bg: colors.green, fg: '#FFFFFF' },
 };
 
 export function StatusChip({ status }: { status: VisitStatus }) {
@@ -90,8 +90,8 @@ export function StatusChip({ status }: { status: VisitStatus }) {
 
 export function NextChip() {
   return (
-    <View style={[styles.chip, styles.chipNext]}>
-      <Text style={[styles.chipText, { color: colors.brand }]}>Next</Text>
+    <View style={[styles.chip, { backgroundColor: colors.navy }]}>
+      <Text style={[styles.chipText, { color: '#FFFFFF' }]}>Next</Text>
     </View>
   );
 }
@@ -119,10 +119,11 @@ export function Input(props: TextInputProps) {
   );
 }
 
+/** Pill-style picker: a grey track with the chosen option raised in white. */
 export function Segmented<T extends string>({ options, value, onChange }: { options: readonly T[]; value: T; onChange: (v: T) => void }) {
   return (
     <View style={styles.seg} accessibilityRole="radiogroup">
-      {options.map((o, i) => {
+      {options.map(o => {
         const on = o === value;
         return (
           <Pressable
@@ -130,13 +131,7 @@ export function Segmented<T extends string>({ options, value, onChange }: { opti
             accessibilityRole="radio"
             accessibilityState={{ selected: on }}
             onPress={() => onChange(o)}
-            style={[
-              styles.segBtn,
-              i === 0 && styles.segFirst,
-              i === options.length - 1 && styles.segLast,
-              i > 0 && styles.segNotFirst,
-              on && styles.segOn,
-            ]}>
+            style={[styles.segBtn, on && styles.segOn]}>
             <Text style={[styles.segText, on && styles.segTextOn]}>{o}</Text>
           </Pressable>
         );
@@ -153,7 +148,7 @@ export function Stepper({ value, onChange, step }: { value: string; onChange: (v
   return (
     <View style={styles.step}>
       <Pressable accessibilityRole="button" accessibilityLabel="Decrease quantity" onPress={() => bump(-1)} style={styles.stepBtn}>
-        <Icon name="minus" size={18} color={colors.brand} strokeWidth={2.6} />
+        <Icon name="minus" size={18} color={colors.navy} strokeWidth={2.6} />
       </Pressable>
       <TextInput
         accessibilityLabel="Quantity"
@@ -163,22 +158,35 @@ export function Stepper({ value, onChange, step }: { value: string; onChange: (v
         style={styles.stepInput}
       />
       <Pressable accessibilityRole="button" accessibilityLabel="Increase quantity" onPress={() => bump(1)} style={styles.stepBtn}>
-        <Icon name="plus" size={18} color={colors.brand} strokeWidth={2.6} />
+        <Icon name="plus" size={18} color={colors.navy} strokeWidth={2.6} />
       </Pressable>
     </View>
   );
 }
 
-/** Bottom action bar that stays above the home indicator. */
+/** Round icon button, e.g. call and directions. */
+export function RoundButton({ icon, label, onPress }: { icon: IconName; label: string; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={onPress}
+      style={({ pressed }) => [styles.round, pressed && { backgroundColor: colors.border }]}>
+      <Icon name={icon} color={colors.navy} />
+    </Pressable>
+  );
+}
+
+/** White bottom action bar that stays above the home indicator. */
 export function Footer({ children }: { children: React.ReactNode }) {
   const insets = useSafeAreaInsets();
-  return <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 12) + 8 }]}>{children}</View>;
+  return <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 12) + 10 }]}>{children}</View>;
 }
 
 export function Loading() {
   return (
     <View style={styles.center}>
-      <ActivityIndicator size="large" color={colors.brand} />
+      <ActivityIndicator size="large" color={colors.navy} />
     </View>
   );
 }
@@ -187,7 +195,7 @@ export function ErrorView({ message, onRetry }: { message: string; onRetry?: () 
   return (
     <View style={styles.center}>
       <Text style={styles.errorText}>{message}</Text>
-      {onRetry && <Button label="Try again" variant="neutral" small onPress={onRetry} style={styles.retry} />}
+      {onRetry && <Button label="Try again" variant="ghost" small onPress={onRetry} style={styles.retry} />}
     </View>
   );
 }
@@ -195,96 +203,83 @@ export function ErrorView({ message, onRetry }: { message: string; onRetry?: () 
 export const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.surface,
-    borderRadius: radius,
+    borderRadius: radius.card,
     borderWidth: 1,
     borderColor: colors.border,
     padding: 16,
     gap: 12,
-    ...cardShadow,
   },
-  sectionLabel: { fontSize: 14, fontWeight: '700', color: colors.text },
+  sectionLabel: { fontSize: 12, fontWeight: '800', letterSpacing: 0.84, textTransform: 'uppercase', color: colors.textWeak },
   btn: {
-    minHeight: touch,
-    borderRadius: radius,
-    borderWidth: 1,
+    minHeight: 54,
+    borderRadius: radius.button,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 6,
+    gap: 8,
     paddingHorizontal: 16,
     flexGrow: 1,
   },
-  btnBrand: { backgroundColor: colors.brand, borderColor: colors.brand },
-  btnBrandPressed: { backgroundColor: colors.brandDark, borderColor: colors.brandDark },
-  btnNeutral: { backgroundColor: colors.surface, borderColor: colors.borderInput },
-  btnDisabled: { backgroundColor: colors.borderInput, borderColor: colors.borderInput },
-  btnSmall: { minHeight: 40, flexGrow: 0, alignSelf: 'flex-start' },
-  btnText: { fontSize: 16 },
-  btnTextSmall: { fontSize: 14 },
-  pressed: { backgroundColor: colors.background },
+  btnSmall: { minHeight: touch, borderRadius: radius.small, flexGrow: 0, alignSelf: 'flex-start' },
+  btnDisabled: { opacity: 0.4 },
+  btnText: { fontSize: 17, fontWeight: '800' },
+  btnTextSmall: { fontSize: 15 },
+  pressed: { borderColor: colors.borderStrong },
   link: { minHeight: touch, justifyContent: 'center', paddingHorizontal: 4, alignSelf: 'flex-start' },
-  linkText: { fontSize: 15, color: colors.brand },
-  chip: { borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2, alignSelf: 'flex-start' },
-  chipNext: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.brand },
-  chipText: { fontSize: 12, fontWeight: '700', lineHeight: 18 },
-  field: { gap: 4 },
-  fieldLabel: { fontSize: 13, color: colors.label },
+  linkText: { fontSize: 15, fontWeight: '700', color: colors.navy, textDecorationLine: 'underline' },
+  chip: { height: 26, borderRadius: 13, paddingHorizontal: 10, justifyContent: 'center', alignSelf: 'flex-start' },
+  chipText: { fontSize: 13, fontWeight: '700' },
+  field: { gap: 6 },
+  fieldLabel: { fontSize: 14, fontWeight: '700' },
   hint: { fontSize: 14, color: colors.textWeak },
   input: {
-    minHeight: touch,
-    borderRadius: radius,
-    borderWidth: 1,
+    minHeight: 50,
+    borderRadius: radius.input,
+    borderWidth: 1.5,
     borderColor: colors.borderInput,
     backgroundColor: colors.surface,
-    paddingHorizontal: 12,
-    fontSize: 16,
-    color: colors.text,
+    paddingHorizontal: 14,
+    fontSize: 17,
   },
-  textarea: { minHeight: 84, paddingTop: 10, textAlignVertical: 'top' },
-  inputFocus: { borderColor: colors.focus },
-  seg: { flexDirection: 'row' },
-  segBtn: {
-    flex: 1,
-    height: touch,
-    borderWidth: 1,
-    borderColor: colors.borderInput,
+  textarea: { minHeight: 84, paddingTop: 12, fontSize: 16, textAlignVertical: 'top' },
+  inputFocus: { borderColor: colors.navy },
+  seg: { flexDirection: 'row', gap: 4, backgroundColor: colors.softer, padding: 4, borderRadius: radius.button },
+  segBtn: { flex: 1, height: touch, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
+  segOn: {
     backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
+    shadowColor: colors.navy,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.18,
+    shadowRadius: 3,
+    elevation: 2,
   },
-  segNotFirst: { marginLeft: -1 },
-  segFirst: { borderTopLeftRadius: radius, borderBottomLeftRadius: radius },
-  segLast: { borderTopRightRadius: radius, borderBottomRightRadius: radius },
-  segOn: { backgroundColor: colors.brand, borderColor: colors.brand, zIndex: 1 },
-  segText: { fontSize: 15, color: colors.brand },
-  segTextOn: { color: '#FFFFFF' },
+  segText: { fontSize: 15, fontWeight: '600', color: colors.scheduledText },
+  segTextOn: { fontWeight: '800', color: colors.navy },
   step: {
     flexDirection: 'row',
-    height: touch,
-    borderWidth: 1,
+    height: 50,
+    borderWidth: 1.5,
     borderColor: colors.borderInput,
-    borderRadius: radius,
+    borderRadius: radius.input,
     backgroundColor: colors.surface,
     overflow: 'hidden',
   },
-  stepBtn: { width: touch, alignItems: 'center', justifyContent: 'center' },
-  stepInput: {
-    flex: 1,
-    minWidth: 0,
-    textAlign: 'center',
-    fontSize: 16,
-    color: colors.text,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: colors.borderInput,
-    padding: 0,
+  stepBtn: { width: 50, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.soft },
+  stepInput: { flex: 1, minWidth: 0, textAlign: 'center', fontSize: 18, fontWeight: '700', padding: 0 },
+  round: {
+    width: touch,
+    height: touch,
+    borderRadius: touch / 2,
+    backgroundColor: colors.soft,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   footer: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 10,
     paddingTop: 12,
-    paddingHorizontal: 12,
-    backgroundColor: colors.background,
+    paddingHorizontal: 16,
+    backgroundColor: colors.surface,
     borderTopWidth: 1,
     borderTopColor: colors.border,
   },
@@ -293,28 +288,18 @@ export const styles = StyleSheet.create({
   retry: { marginTop: 16, alignSelf: 'center' },
   // Shared screen layout
   screen: { flex: 1, backgroundColor: colors.background },
-  scroll: { padding: 12, gap: 12 },
+  scroll: { padding: 16, gap: 12 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   grow: { flex: 1, minWidth: 0 },
   muted: { color: colors.textWeak },
-  line: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.border },
+  line: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.soft },
   lineFirst: { borderTopWidth: 0, paddingTop: 0 },
-  squareBtn: {
-    width: touch,
-    height: touch,
-    borderRadius: radius,
-    borderWidth: 1,
-    borderColor: colors.borderInput,
-    backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   thumbs: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   thumb: {
     width: '31.5%',
     aspectRatio: 1,
-    borderRadius: radius,
-    backgroundColor: colors.border,
+    borderRadius: radius.small,
+    backgroundColor: colors.softer,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
@@ -323,35 +308,32 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: 6,
     bottom: 6,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.borderInput,
-    borderRadius: 999,
-    paddingHorizontal: 6,
-    paddingVertical: 1,
+    backgroundColor: colors.navy,
+    color: '#FFFFFF',
+    borderRadius: 7,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
     fontSize: 11,
     fontWeight: '700',
-    color: colors.text,
     overflow: 'hidden',
   },
   total: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
-  totalLabel: { fontSize: 15, color: colors.text },
-  totalValue: { fontSize: 20, fontWeight: '700', color: colors.text },
+  totalLabel: { fontSize: 15 },
+  totalValue: { fontSize: 22, fontWeight: '800' },
+  note: { backgroundColor: colors.note, borderRadius: radius.small, padding: 12 },
   // Visit card on My day and Done
   vcard: {
     flexDirection: 'row',
     gap: 14,
     backgroundColor: colors.surface,
-    borderRadius: radius,
+    borderRadius: radius.card,
     borderWidth: 1,
     borderColor: colors.border,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    ...cardShadow,
+    padding: 16,
   },
   vtime: { width: 52, gap: 2 },
-  vstart: { fontSize: 17, fontWeight: '700', color: colors.text },
+  vstart: { fontSize: 18, fontWeight: '800', letterSpacing: -0.18 },
   vend: { fontSize: 13, color: colors.textWeak },
-  vaccount: { fontSize: 17, fontWeight: '700', lineHeight: 21, color: colors.text },
-  vtitle: { fontSize: 15, color: colors.text },
+  vaccount: { fontSize: 17, fontWeight: '700', lineHeight: 21 },
+  vtitle: { fontSize: 15 },
 });

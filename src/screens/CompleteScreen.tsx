@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { Text } from '../components/Text';
 import { SignaturePad, SignaturePadHandle } from '../components/SignaturePad';
 import { Button, Card, ErrorView, Field, Footer, Input, LinkButton, Loading, SectionLabel, styles as ui } from '../components/ui';
 import { money, plural } from '../format';
@@ -72,7 +73,7 @@ export function CompleteScreen({ navigation, route }: ScreenProps<'Complete'>) {
 
         <View style={{ gap: 4 }}>
           <View style={[ui.row, { justifyContent: 'space-between' }]}>
-            <Text style={{ fontSize: 13, color: colors.label }}>Customer signature</Text>
+            <Text style={{ fontSize: 13, color: colors.text }}>Customer signature</Text>
             <LinkButton label="Clear" onPress={() => pad.current?.clear()} />
           </View>
           {/* Stop the page scrolling while a finger is on the pad. */}
@@ -89,7 +90,7 @@ export function CompleteScreen({ navigation, route }: ScreenProps<'Complete'>) {
         <LinkButton label="Customer not available to sign" onPress={() => finish(false)} />
       </ScrollView>
       <Footer>
-        <Button icon="check" label="Finish visit" disabled={sigEmpty || !signer.trim()} busy={saving} onPress={() => finish(true)} />
+        <Button variant="go" icon="check" label="Finish visit" disabled={sigEmpty || !signer.trim()} busy={saving} onPress={() => finish(true)} />
       </Footer>
     </KeyboardAvoidingView>
   );

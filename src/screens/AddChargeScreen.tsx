@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { Text } from '../components/Text';
 import { Button, Card, Field, Footer, Input, Segmented, Stepper, styles as ui } from '../components/ui';
 import { money, unitLabel } from '../format';
 import type { ScreenProps } from '../navigation';

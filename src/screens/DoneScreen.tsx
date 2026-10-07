@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { Text } from '../components/Text';
 import { Icon } from '../components/Icon';
 import { Button, Card, ErrorView, Footer, Loading, SectionLabel, styles as ui } from '../components/ui';
 import { VisitCard } from '../components/VisitCard';
@@ -60,7 +61,7 @@ export function DoneScreen({ navigation, route }: ScreenProps<'Done'>) {
         )}
       </ScrollView>
       <Footer>
-        <Button label="Back to my day" onPress={() => navigation.popToTop()} />
+        <Button variant="dark" label="Back to my day" onPress={() => navigation.popToTop()} />
       </Footer>
     </View>
   );
@@ -68,7 +69,7 @@ export function DoneScreen({ navigation, route }: ScreenProps<'Done'>) {
 
 const s = StyleSheet.create({
   hero: { alignItems: 'center', gap: 10, paddingTop: 28, paddingHorizontal: 8, paddingBottom: 8 },
-  badge: { width: 84, height: 84, borderRadius: 42, backgroundColor: colors.success, alignItems: 'center', justifyContent: 'center' },
-  title: { fontSize: 24, fontWeight: '700', color: colors.text },
+  badge: { width: 84, height: 84, borderRadius: 42, backgroundColor: colors.green, alignItems: 'center', justifyContent: 'center' },
+  title: { fontSize: 24, fontWeight: '800' },
   sub: { fontSize: 16, lineHeight: 22, textAlign: 'center' },
 });

@@ -78,11 +78,11 @@ export const SignaturePad = forwardRef<SignaturePadHandle, Props>(({ onChange },
 const styles = StyleSheet.create({
   pad: {
     height: HEIGHT,
-    borderRadius: radius,
-    borderWidth: 1,
+    borderRadius: radius.small,
+    borderWidth: 1.5,
     borderStyle: 'dashed',
-    borderColor: colors.borderInput,
-    backgroundColor: colors.surface,
+    borderColor: colors.borderStrong,
+    backgroundColor: '#FCFCFD',
     overflow: 'hidden',
   },
 });
