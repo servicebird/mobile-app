@@ -8,6 +8,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Loading } from './src/components/ui';
 import type { RootStackParamList } from './src/navigation';
@@ -59,6 +60,8 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaProvider>
+      {/* Every screen has a navy top, so the status bar text is always white. */}
+      <StatusBar barStyle="light-content" backgroundColor={colors.navy} />
       {state.kind === 'checking' && <Loading />}
       {state.kind === 'loggedOut' && <LoginScreen onLogin={doLogin} busy={state.busy} error={state.error} />}
       {value && (
@@ -71,7 +74,6 @@ function App(): React.JSX.Element {
                 headerTitleStyle: { color: '#FFFFFF', fontFamily: fonts.bold, fontSize: 19 },
                 headerShadowVisible: false,
                 headerBackButtonDisplayMode: 'minimal',
-                statusBarStyle: 'light',
                 contentStyle: { backgroundColor: colors.background },
               }}>
               <Stack.Screen name="MyDay" component={MyDayScreen} options={{ title: 'My day' }} />

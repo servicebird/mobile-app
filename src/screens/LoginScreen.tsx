@@ -3,7 +3,7 @@
  * page of the worker's company; the app itself never sees the password.
  */
 import React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BirdMark, Wordmark } from '../components/Logo';
 import { Text } from '../components/Text';
@@ -20,7 +20,6 @@ export function LoginScreen({ onLogin, busy, error }: Props) {
   const insets = useSafeAreaInsets();
   return (
     <View style={s.screen}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.navy} />
       <View style={[s.brand, { paddingTop: insets.top + 24 }]}>
         <BirdMark size={104} tile />
         <Wordmark size={36} />

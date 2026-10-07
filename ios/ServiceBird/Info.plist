@@ -68,8 +68,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>ServiceBird uses the camera to take photos of your work for the job.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
