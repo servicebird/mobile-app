@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>remoteAccessConsumerKey</key>
-	<string>3MVG98dostKihXN53TYStBIiS8FC2a3tE3XhGId0hQ37iQjF0xe4fxMSb2mFaWZn9e3GiLs1q67TNlyRji.Xw</string>
+	<string>3MVG9si4IYYQbK9fxktYvwocZEhGN2Dk3b2uB8GPL7mPCx8yZauAfmnaTpvweL_3JXD1F.B1L4Vdaqy5M7kQQ</string>
 	<key>oauthRedirectURI</key>
-	<string>testsfdc:///mobilesdk/detect/oauth/done</string>
+	<string>com.servicebird.mobile://oauth/done</string>
 	<key>shouldAuthenticate</key>
 	<false/>
 </dict>

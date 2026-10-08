@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="remoteAccessConsumerKey">3MVG98dostKihXN53TYStBIiS8FC2a3tE3XhGId0hQ37iQjF0xe4fxMSb2mFaWZn9e3GiLs1q67TNlyRji.Xw</string>
-    <string name="oauthRedirectURI">testsfdc:///mobilesdk/detect/oauth/done</string>
+    <string name="remoteAccessConsumerKey">3MVG9si4IYYQbK9fxktYvwocZEhGN2Dk3b2uB8GPL7mPCx8yZauAfmnaTpvweL_3JXD1F.B1L4Vdaqy5M7kQQ</string>
+    <string name="oauthRedirectURI">com.servicebird.mobile://oauth/done</string>
 </resources>
