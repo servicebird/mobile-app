@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63B0ED570C1C45B79264BC29 /* Figtree-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */; };
 		69BE961B2AD535C8002E3F6C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 69BE961A2AD535C8002E3F6C /* PrivacyInfo.xcprivacy */; };
+		A334FA653C6D4AE3BEEB074F /* Figtree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */; };
 		B7168FBE1FACC7EB00A48DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7168FBD1FACC7EB00A48DB5 /* LaunchScreen.storyboard */; };
 		B77BD8AF2113632C0036B284 /* bootconfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B77BD8AE2113632C0036B284 /* bootconfig.plist */; };
+		B95DA8703AA942E79B5058B2 /* Figtree-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */; };
 		BDDADCA1A0B90A26BAEB44DA /* Pods_ServiceBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8770B5CCD5CCB2246FCA5CC5 /* Pods_ServiceBird.framework */; };
 		CEA8CA061F071C3300448B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA8CA051F071C3300448B51 /* Images.xcassets */; };
 		D3290F0D2DFB60230095B81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3290F0C2DFB60230095B81E /* AppDelegate.swift */; };
 		F5413AB12F61A00100E52D27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5413AB02F61A00100E52D27 /* SceneDelegate.swift */; };
-		FD2804156C274921A34A80EA /* Figtree-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */; };
-		B95DA8703AA942E79B5058B2 /* Figtree-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */; };
-		63B0ED570C1C45B79264BC29 /* Figtree-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */; };
-		A334FA653C6D4AE3BEEB074F /* Figtree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */; };
 		F5CFBD1B2B564C03803CFB44 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6E462F156C44AEF959D58AE /* OFL.txt */; };
+		FD2804156C274921A34A80EA /* Figtree-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D8CDE8158AC70656CC3EE20 /* Pods-ServiceBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceBird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ServiceBird/Pods-ServiceBird.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ServiceBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServiceBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ServiceBird/Info.plist; sourceTree = "<group>"; };
+		18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-Regular.ttf"; path = "../assets/fonts/Figtree-Regular.ttf"; sourceTree = "<group>"; };
+		3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-ExtraBold.ttf"; path = "../assets/fonts/Figtree-ExtraBold.ttf"; sourceTree = "<group>"; };
 		4FF12F8E1DCA93E2004D9EF9 /* ServiceBird.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ServiceBird.entitlements; path = ServiceBird/ServiceBird.entitlements; sourceTree = "<group>"; };
+		582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-SemiBold.ttf"; path = "../assets/fonts/Figtree-SemiBold.ttf"; sourceTree = "<group>"; };
 		69BE961A2AD535C8002E3F6C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ServiceBird/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		8770B5CCD5CCB2246FCA5CC5 /* Pods_ServiceBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ServiceBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E462F156C44AEF959D58AE /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../assets/fonts/OFL.txt; sourceTree = "<group>"; };
 		AE79D28E6E57F5B77FA24716 /* Pods-ServiceBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ServiceBird.release.xcconfig"; path = "Pods/Target Support Files/Pods-ServiceBird/Pods-ServiceBird.release.xcconfig"; sourceTree = "<group>"; };
 		B7168FBD1FACC7EB00A48DB5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "../mobile_sdk/SalesforceMobileSDK-iOS/shared/resources/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		B77BD8AE2113632C0036B284 /* bootconfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bootconfig.plist; path = ServiceBird/bootconfig.plist; sourceTree = "<group>"; };
 		CEA8CA051F071C3300448B51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ServiceBird/Images.xcassets; sourceTree = "<group>"; };
 		D3290F0C2DFB60230095B81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ServiceBird/AppDelegate.swift; sourceTree = "<group>"; };
+		D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Figtree-Bold.ttf"; path = "../assets/fonts/Figtree-Bold.ttf"; sourceTree = "<group>"; };
 		F5413AB02F61A00100E52D27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ServiceBird/SceneDelegate.swift; sourceTree = "<group>"; };
-		582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */ = {isa = PBXFileReference; name = "Figtree-SemiBold.ttf"; path = "../assets/fonts/Figtree-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */ = {isa = PBXFileReference; name = "Figtree-Regular.ttf"; path = "../assets/fonts/Figtree-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Figtree-ExtraBold.ttf"; path = "../assets/fonts/Figtree-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */ = {isa = PBXFileReference; name = "Figtree-Bold.ttf"; path = "../assets/fonts/Figtree-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A6E462F156C44AEF959D58AE /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../assets/fonts/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +61,18 @@
 				4F3AFF431DC2C869006FF6B0 /* Supporting Files */,
 			);
 			name = ServiceBird;
+			sourceTree = "<group>";
+		};
+		16B764A5CFC04AAA8125BD0B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */,
+				18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */,
+				3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */,
+				D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */,
+				A6E462F156C44AEF959D58AE /* OFL.txt */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		4F3AFF421DC2C856006FF6B0 /* Classes */ = {
@@ -121,19 +133,6 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
-		};
-		16B764A5CFC04AAA8125BD0B /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				582AE8EDA29C458AB25B6B44 /* Figtree-SemiBold.ttf */,
-				18AF0CFBF55649859DC7DE4D /* Figtree-Regular.ttf */,
-				3FA723302D974BD5B718DACD /* Figtree-ExtraBold.ttf */,
-				D52DCB6EA1F74524A010444A /* Figtree-Bold.ttf */,
-				A6E462F156C44AEF959D58AE /* OFL.txt */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -228,7 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"\\\"$WITH_ENVIRONMENT\\\" \\\"$REACT_NATIVE_XCODE\\\"\"\n";
 		};
 		0D1647048E9655B7745B0762 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -256,9 +255,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ServiceBird/Pods-ServiceBird-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ServiceBird/Pods-ServiceBird-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -273,9 +276,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ServiceBird/Pods-ServiceBird-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ServiceBird/Pods-ServiceBird-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -306,6 +313,7 @@
 				CODE_SIGN_ENTITLEMENTS = ServiceBird/ServiceBird.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 4RNBT7HR5C;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
@@ -337,6 +345,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ServiceBird/ServiceBird.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4RNBT7HR5C;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native/React/**",
@@ -432,6 +441,8 @@
 					"${PODS_ROOT}/React-NativeModulesApple",
 					"${PODS_ROOT}/React-graphics",
 					"${PODS_ROOT}/React-graphics/react/renderer/graphics/platform/ios",
+					"${PODS_ROOT}/React-featureflags",
+					"${PODS_ROOT}/React-renderercss",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD = "";
@@ -446,10 +457,8 @@
 					"$(inherited)",
 					"-DRCT_REMOVE_LEGACY_ARCH=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				PODFILE_DIR = "$(SRCROOT)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -524,6 +533,8 @@
 					"${PODS_ROOT}/React-NativeModulesApple",
 					"${PODS_ROOT}/React-graphics",
 					"${PODS_ROOT}/React-graphics/react/renderer/graphics/platform/ios",
+					"${PODS_ROOT}/React-featureflags",
+					"${PODS_ROOT}/React-renderercss",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD = "";
@@ -537,10 +548,8 @@
 					"$(inherited)",
 					"-DRCT_REMOVE_LEGACY_ARCH=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				PODFILE_DIR = "$(SRCROOT)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;

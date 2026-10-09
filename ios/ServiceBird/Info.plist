@@ -33,12 +33,23 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>ServiceBird uses the camera to take photos of your work for the job.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>ServiceBird lets you attach photos from your gallery to the job.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>SFDCOAuthLoginHost</key>
 	<string>login.salesforce.com</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Figtree-SemiBold.ttf</string>
+		<string>Figtree-Regular.ttf</string>
+		<string>Figtree-ExtraBold.ttf</string>
+		<string>Figtree-Bold.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -62,26 +73,15 @@
 	<array>
 		<string>arm64</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>ServiceBird uses the camera to take photos of your work for the job.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>ServiceBird lets you attach photos from your gallery to the job.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Figtree-SemiBold.ttf</string>
-		<string>Figtree-Regular.ttf</string>
-		<string>Figtree-ExtraBold.ttf</string>
-		<string>Figtree-Bold.ttf</string>
-	</array>
 </dict>
 </plist>
