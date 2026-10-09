@@ -93,17 +93,24 @@ the menu on the Salesforce page and choose "Use custom domain" or "Sandbox". Cha
    the Settings custom setting is built. If they don't exist, the price is just
    left empty.
 
-## Login settings (important before release)
+## Login settings
 
 `android/app/src/main/res/values/bootconfig.xml` and
-`ios/ServiceBird/bootconfig.plist` currently use the **Salesforce Mobile SDK
-sample connected app** key, which is fine for development in any org.
+`ios/ServiceBird/bootconfig.plist` use the **ServiceBird Mobile** External Client
+App, created in the Partner Business Org (Dev Hub) and shipped in the ServiceBird
+managed package:
 
-Before release, create ServiceBird's own Connected App / External Client App in
-the packaging org, put it in the managed package, and replace `remoteAccessConsumerKey`
-and `oauthRedirectURI` in both files with its values. This is also what
-Professional Edition API access is granted to (see
-`research/mobile-app-architecture.md`).
+- Consumer key: `3MVG9si4IYYQ...` (full value in both bootconfig files)
+- Callback URL: `com.servicebird.mobile://oauth/done`. The Android
+  `AndroidManifest.xml` login intent filter matches it (scheme
+  `com.servicebird.mobile`, host `oauth`, path `/done`).
+
+The app can only log in to an org where ServiceBird is installed (or the Dev Hub
+itself). To test against a scratch org without the package, temporarily put back
+the Mobile SDK sample key
+`3MVG98dostKihXN53TYStBIiS8FC2a3tE3XhGId0hQ37iQjF0xe4fxMSb2mFaWZn9e3GiLs1q67TNlyRji.Xw`
+with callback `testsfdc:///mobilesdk/detect/oauth/done` (and the matching
+intent filter), and don't commit it.
 
 ## Choices made in this first version
 

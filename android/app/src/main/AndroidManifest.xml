@@ -53,9 +53,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="testsfdc"
-                    android:host=""
-                    android:path="/mobilesdk/detect/oauth/done" />
+                    android:scheme="com.servicebird.mobile"
+                    android:host="oauth"
+                    android:path="/done" />
             </intent-filter>
         </activity>
     </application>
